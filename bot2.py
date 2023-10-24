@@ -1,5 +1,6 @@
 import asyncio
 import logging
+import lexicon.lexicon_ru
 
 from aiogram import Bot, Dispatcher, F
 from aiogram.filters import CommandStart
@@ -7,7 +8,7 @@ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, C
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 from config_data.config import Config, load_config
-from lexicon.lexicon_ru import LEXICON
+
 
 dp = Dispatcher()
 logger = logging.getLogger(__name__)
@@ -28,7 +29,7 @@ def create_inline_kb(width: int,
     if args:
         for button in args:
             buttons.append(InlineKeyboardButton(
-                text=LEXICON[button] if button in LEXICON else button,
+                text=lexicon.lexicon_ru.LEXICON[button] if button in lexicon.lexicon_ru.LEXICON else button,
                 callback_data=button
             ))
     if kwargs:

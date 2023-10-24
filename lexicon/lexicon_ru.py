@@ -3,14 +3,16 @@ LEXICON: dict[str, str] = {
     'but_2': '2',
     'but_3': '3',
     'but_4': '4',
-    'but_5': '5'}
+    'but_5': '5'
+}
 
 BUTTONS: dict[str, str] = {
     'btn_1': '1',
     'btn_2': '2',
     'btn_3': '3',
     'btn_4': '4',
-    'btn_5': '5'}
+    'btn_5': '5'
+}
 
 LEXICON_RU: dict[str, str] = {
     '/start': '<b>Привет!</b>\nДавай с тобой сыграем в игру '
