@@ -5,27 +5,35 @@ from aiogram import Bot, Dispatcher
 from aiogram.filters import CommandStart
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
-from bot import logger
 from config_data.config import Config, load_config
 
 dp = Dispatcher()
+logger = logging.getLogger(__name__)
 
 # Создаем объекты инлайн-кнопок
+group_name = 'aiogram_stepik_course'
 url_button_1 = InlineKeyboardButton(
-    text='Курс "Телеграм-боты на Python и AIOgram"',
-    url='https://stepik.org/120924'
+    text='Группа "Телеграм-боты на AIOgram"',
+    url=f'tg://resolve?domain={group_name}'
 )
+user_id = 1227611413
 url_button_2 = InlineKeyboardButton(
-    text='Документация Telegram Bot API',
-    url='https://core.telegram.org/bots/api'
+    text='Автор курса на Степике по телеграм-ботам',
+    url=f'tg://user?id={user_id}'
+)
+
+channel_name = 'toBeAnMLspecialist'
+url_button_3 = InlineKeyboardButton(
+    text='Канал "Стать специалистом по машинному обучению"',
+    url=f'https://t.me/{channel_name}'
 )
 
 # Создаем объект инлайн-клавиатуры
 keyboard = InlineKeyboardMarkup(
     inline_keyboard=[[url_button_1],
-                     [url_button_2]]
+                     [url_button_2],
+                     [url_button_3]]
 )
-
 
 # Этот хэндлер будет срабатывать на команду "/start"
 # и отправлять в чат клавиатуру c url-кнопками
