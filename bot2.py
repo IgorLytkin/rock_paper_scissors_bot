@@ -6,9 +6,7 @@ from aiogram import Bot, Dispatcher, F
 from aiogram.filters import CommandStart
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, CallbackQuery
 from aiogram.utils.keyboard import InlineKeyboardBuilder
-
 from config_data.config import Config, load_config
-
 
 dp = Dispatcher()
 logger = logging.getLogger(__name__)
@@ -67,16 +65,12 @@ big_button_2 = InlineKeyboardButton(
 
 # keyboard = create_inline_kb(2, last_btn='Последняя кнопка', BUTTONS)
 # keyboard = create_inline_kb(2, last_btn=None, b_1='1', b_2='2', b_3='3', b_4='4', b_5='5', b_6='Последняя кнопка')
-
 # keyboard = create_inline_kb(2, last_btn='Последняя кнопка', *BUTTONS)
-# keyboard = create_inline_kb(2, last_btn='Последняя кнопка', **BUTTONS)
+keyboard = create_inline_kb(2, last_btn='Последняя кнопка', **lexicon.lexicon_ru.BUTTONS)
 # keyboard = create_inline_kb(2, last_btn='Последняя кнопка', b_1='1', b_2='2', b_3='3', b_4='4', b_5='5')
-keyboard = create_inline_kb(3, 'but_1', 'but_2', 'but_3', 'but_4', 'but_5', last_btn='Последняя кнопка')
+# keyboard = create_inline_kb(3, 'but_1', 'but_2', 'but_3', 'but_4', 'but_5', last_btn='Последняя кнопка')
 
-# Этот хэндлер будет срабатывать на апдейт типа CallbackQuery
-# с data 'big_button_1_pressed'
-
-
+# Этот хэндлер будет срабатывать на апдейт типа CallbackQuery с data 'big_button_1_pressed'
 @dp.callback_query(F.data == 'big_button_1_pressed')
 async def process_button_1_press(callback: CallbackQuery):
     if callback.message.text != 'Была нажата БОЛЬШАЯ КНОПКА 1':
