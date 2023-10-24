@@ -28,11 +28,24 @@ keyboard = InlineKeyboardMarkup(
 )
 
 # Этот хэндлер будет срабатывать на апдейт типа CallbackQuery
-# с data 'big_button_1_pressed' или 'big_button_2_pressed'
-@dp.callback_query(F.data.in_(['big_button_1_pressed',
-                               'big_button_2_pressed']))
-async def process_buttons_press(callback: CallbackQuery):
-    await callback.answer()
+# с data 'big_button_1_pressed'
+@dp.callback_query(F.data == 'big_button_1_pressed')
+async def process_button_1_press(callback: CallbackQuery):
+    await callback.message.edit_text(
+        text='Была нажата БОЛЬШАЯ КНОПКА 1',
+        reply_markup=callback.message.reply_markup
+    )
+
+
+# Этот хэндлер будет срабатывать на апдейт типа CallbackQuery
+# с data 'big_button_2_pressed'
+@dp.callback_query(F.data == 'big_button_2_pressed')
+async def process_button_2_press(callback: CallbackQuery):
+    await callback.message.edit_text(
+        text='Была нажата БОЛЬШАЯ КНОПКА 2',
+        reply_markup=callback.message.reply_markup
+    )
+
 
 # Этот хэндлер будет срабатывать на команду "/start"
 # и отправлять в чат клавиатуру c url-кнопками
